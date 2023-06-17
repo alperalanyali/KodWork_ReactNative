@@ -1,12 +1,27 @@
 import React from 'react';
-import {Text,View} from 'react-native';
-
-const JobCard = ({job})=>{
-    console.log(job)
+import {Text,View,TouchableWithoutFeedback} from 'react-native';
+import styles from './JobCard-styles'
+const JobCard = ({job,handleSelect})=>{
+    
     return(
-        <View>
-            <Text>{job.name}</Text>
-        </View>
+
+        <TouchableWithoutFeedback onPress={handleSelect} key={job.id}>
+            <View style={styles.container} key={job.id}>
+                <Text>{job.name}</Text>
+                
+                {
+                    job.locations.map((location)=>{
+                        return(
+                            <View style={styles.location_container}>
+                                <Text style={styles.location_name}>{location.name}</Text>
+                            </View>
+                            
+                        )
+                    })
+                }
+                <Text style={styles.category}>{job.levels[0].name}</Text>
+            </View>
+        </TouchableWithoutFeedback>
     )
 }
 
