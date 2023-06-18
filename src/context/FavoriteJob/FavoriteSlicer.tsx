@@ -1,8 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
-
-
-import { ActionSheetIOS } from 'react-native'
 
 const favoriteSlice = createSlice({
     name:"favoriteJobs",

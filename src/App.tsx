@@ -10,6 +10,7 @@ const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 import { store } from './context/store'
 import { Provider } from 'react-redux'
+import SubmitJobs from './pages/SubmitJobs/SubmitJobs';
 const JobStack = ()=>{
   return (
 
@@ -27,7 +28,8 @@ export default function App() {
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Jobs">
         <Drawer.Screen name="Jobs" component={JobStack} />
-        <Drawer.Screen name="FavoriteJobs" component={FavoriteJobs} />
+        <Drawer.Screen name="FavoriteJobs" component={FavoriteJobs} options={{title:"Favorite Jobs"}} />
+        <Drawer.Screen name="SubmitJobs" component={SubmitJobs} options={{title:"Submit Jobs"}} />
       </Drawer.Navigator>
     </NavigationContainer>
     </Provider>

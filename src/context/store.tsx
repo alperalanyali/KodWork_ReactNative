@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import favoriteJobReducer from './FavoriteJob/FavoriteSlicer';
+import submittedJobsReducer from './SubmittedJob/submittedjobslice'
 export const store = configureStore({
   reducer: {
-    favoriteJobs:favoriteJobReducer
+    favoriteJobs:favoriteJobReducer,
+    submittedJobs:submittedJobsReducer
   },
 })
 

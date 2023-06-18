@@ -1,16 +1,13 @@
 import React from 'react';
-import {Text,View,ActivityIndicator,Dimensions,ScrollView,Touchable} from 'react-native';
+import {Text,View,Dimensions,ScrollView,} from 'react-native';
 import RenderHTML from 'react-native-render-html';
-import useFetchData from '../../hooks/useFetchData/useFetchData';
-import {API_URL} from '../../config';
 import styles from './JobDetail-styles'
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import { useSelector, useDispatch } from 'react-redux'
 import { addFavorite,removeFavorite } from '../../context/FavoriteJob/FavoriteSlicer';
 import {RootState} from '../../context/store'
 import CustomButton from '../../components/CustomButton/CustomButton';
-import { add } from 'react-native-reanimated';
+import {addSubmit} from '../../context/SubmittedJob/submittedjobslice'
 const JobDetail = ({navigation,route})=>{
     const favoriteJobs = useSelector((state:RootState) => state.favoriteJobs.favoriteJobs)
     const dispatch = useDispatch();
@@ -18,7 +15,7 @@ const JobDetail = ({navigation,route})=>{
     console.log(job);
     navigation.title = job.name
     const handleSubmit = ()=>{
-
+            dispatch(addSubmit(job))
     }
     console.log(favoriteJobs);    
     const handleFavoriteJob = ()=>{  
