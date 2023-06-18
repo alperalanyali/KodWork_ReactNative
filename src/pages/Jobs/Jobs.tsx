@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text,View,SafeAreaView,FlatList,ActivityIndicator, Alert } from 'react-native';
 import useFetchData from '../../hooks/useFetchData/useFetchData'
 import { API_URL } from '../../config';
 import JobCard from '../../components/Cards/JobCard/JobCard';
+import Footer from '../../components/Footer/Footer';
 const Jobs = ({navigation})=>{
+    
     const {error,loading,data} = useFetchData(API_URL+"?page=1",true);
     const handleSelect = (item) => {
         navigation.navigate("JobDetailScreen",{job:item})
-    }
-
+    } 
     const renderJob = ({item}) => <JobCard job={item} handleSelect={()=>handleSelect(item)}/>
     if(error){
         return(
@@ -21,8 +22,7 @@ const Jobs = ({navigation})=>{
     }
     return(
         <SafeAreaView>            
-            <FlatList
-                
+            <FlatList                
                 data={data}
                 renderItem={renderJob}
             />
