@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
-const useFetchData = (url,isArray)=>{
-    const [data,setData] = useState();
+const useFetchData = (url)=>{
+    const [data,setData] = useState([]);
     const[loading,setLoading] =useState(true);
     const[error,setError] = useState(null);
     
@@ -9,10 +9,8 @@ const useFetchData = (url,isArray)=>{
     
         try {
         const response = await axios.get(url);
-        if(isArray){
-            setData(response.data.results); 
-        }   else
-            setData(response.data)
+                        
+        setData(response.data.results);                 
         setLoading(false);
        } catch (error) {
         setLoading(false);

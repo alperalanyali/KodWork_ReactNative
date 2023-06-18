@@ -8,23 +8,28 @@ import {createStackNavigator} from '@react-navigation/stack'
 import JobDetail from './pages/JobDetail/JobDetail';
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
-
+import { store } from './context/store'
+import { Provider } from 'react-redux'
 const JobStack = ()=>{
   return (
+
       <Stack.Navigator screenOptions={{headerTintColor:'#E97451'}}>
         <Stack.Screen name="Jobs" component={Jobs}/>
-        <Stack.Screen name="JobDetailScreen" component={JobDetail}/>
+        <Stack.Screen name="JobDetailScreen" component={JobDetail} options={{title:'Detail'}} />
       </Stack.Navigator>
+
   )
 }
 
 export default function App() {
   return (
+    <Provider store={store}>
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Jobs">
         <Drawer.Screen name="Jobs" component={JobStack} />
         <Drawer.Screen name="FavoriteJobs" component={FavoriteJobs} />
       </Drawer.Navigator>
     </NavigationContainer>
+    </Provider>
   );
 }

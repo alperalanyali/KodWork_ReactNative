@@ -19,9 +19,13 @@ export default StyleSheet.create({
         fontWeight:"bold"
     },
     row:{
-        flexDirection:'row'
+        flexDirection:'row',
+        justifyContent:'space-around',
+        marginBottom:10,
     },
     html:{
         margin:10,
-    }
+    },
+
+
 })
